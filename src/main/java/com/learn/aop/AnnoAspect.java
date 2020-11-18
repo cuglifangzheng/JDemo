@@ -3,10 +3,9 @@
  */
 package com.learn.aop;
 
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
+import org.springframework.util.StopWatch;
 
 /**
  *
@@ -28,5 +27,21 @@ public class AnnoAspect {
     @After("jointPoint()")
     public void after() {
         System.out.println("AnnoAspect after say");
+    }
+
+    @Pointcut("execution(* *.*(..)) && @annotation(com.learn.aop.TimeCost)")
+    public void customAnnotation() {
+    }
+
+    @Around("customAnnotation()")
+    public Object profile(ProceedingJoinPoint pjp) throws Throwable {
+        StopWatch sw = new StopWatch(getClass().getSimpleName());
+        try {
+            sw.start(pjp.getSignature().toShortString());
+            return pjp.proceed();
+        } finally {
+            sw.stop();
+            System.out.println(sw.prettyPrint());
+        }
     }
 }

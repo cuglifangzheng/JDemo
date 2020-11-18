@@ -13,8 +13,11 @@ public class App {
         System.out.println("App say");
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         App app = new App();
         app.say();
+
+        CostTest costTest = new CostTest();
+        costTest.cost();
     }
 }
