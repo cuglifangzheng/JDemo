@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/jdbc
+       http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-2.5.xsd"
+       default-autowire="byName">
+
+    <!--<bean id="test" class="com.learn.spring.aop.Aspects"/>-->
+    <!--<bean id="featureCal" class="com.learn.spring.aop.FeatureCalImpl"/>-->
+
+    <jdbc:embedded-database id="rdsMockDataSource" type="H2">
+        <jdbc:script location="classpath:/META-INF/spring/tranction.sql"/>
+    </jdbc:embedded-database>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager ">
+        <property name="dataSource">
+            <ref bean="rdsMockDataSource" />
+        </property>
+    </bean>
+
+    <!--<aop:aspectj-autoproxy/>-->
+
+    <!--<aop:config>-->
+        <!--<aop:pointcut id="point"-->
+                      <!--expression="execution(* com.learn.spring.aop.RefClass.hehe(..))"/>-->
+        <!--<aop:addTraceId ref="test">-->
+            <!--<aop:before method="addTraceId" pointcut-ref="point" />-->
+        <!--</aop:addTraceId>-->
+    <!--</aop:config>-->
+
+</beans>
