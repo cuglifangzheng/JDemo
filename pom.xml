@@ -157,6 +157,12 @@
       <version>1.18.2</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.16.18</version>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -218,12 +224,21 @@
           <source>1.8</source>
           <target>1.8</target>
           <complianceLevel>1.8</complianceLevel>
+          <excludes>
+            <exclude>**/*.java</exclude>
+          </excludes>
+          <forceAjcCompile>true</forceAjcCompile>
         </configuration>
         <executions>
           <execution>
             <goals>
               <goal>compile</goal>
             </goals>
+            <configuration>
+              <weaveDirectories>
+                <weaveDirectory>${project.build.directory}/classes</weaveDirectory>
+              </weaveDirectories>
+            </configuration>
           </execution>
         </executions>
       </plugin>

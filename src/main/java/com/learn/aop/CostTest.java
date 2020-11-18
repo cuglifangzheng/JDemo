@@ -3,11 +3,16 @@
  */
 package com.learn.aop;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 /**
  *
  * @author lifangzheng
  * @version : CostTest.java, v 0.1 2020年11月18日 2:45 下午 lifangzheng Exp $
  */
+@Data
+@AllArgsConstructor
 public class CostTest {
     @TimeCost
     public void cost() throws Exception {
