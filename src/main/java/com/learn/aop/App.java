@@ -13,11 +13,16 @@ public class App {
         System.out.println("App say");
     }
 
+    @CatchException({IllegalArgumentException.class, UnsupportedOperationException.class})
+    public void throwExcp() {
+        System.out.println("I want to throw exception");
+        throw new IllegalArgumentException("");
+    }
+
     public static void main(String[] args) throws Exception {
         App app = new App();
         app.say();
 
-        CostTest costTest = new CostTest();
-        costTest.cost();
+        app.throwExcp();
     }
 }
