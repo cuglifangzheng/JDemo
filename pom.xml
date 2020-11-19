@@ -224,6 +224,7 @@
           <source>1.8</source>
           <target>1.8</target>
           <complianceLevel>1.8</complianceLevel>
+<!--          让lombok和aspectj协作的核心-->
           <excludes>
             <exclude>**/*.java</exclude>
           </excludes>
@@ -235,6 +236,7 @@
               <goal>compile</goal>
             </goals>
             <configuration>
+              <!--          让lombok和aspectj协作的核心-->
               <weaveDirectories>
                 <weaveDirectory>${project.build.directory}/classes</weaveDirectory>
               </weaveDirectories>

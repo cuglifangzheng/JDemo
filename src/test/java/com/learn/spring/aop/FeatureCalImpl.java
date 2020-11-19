@@ -3,7 +3,6 @@
  */
 package com.learn.spring.aop;
 
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Required;
 
@@ -15,6 +14,10 @@ import org.springframework.beans.factory.annotation.Required;
 @Slf4j
 public class FeatureCalImpl {
     private String str;
+
+    public void cal1(String input) {
+        log.info("inner call 1");
+    }
 
     public void cal0(String input) {
         log.info("execute " + input + " !");
