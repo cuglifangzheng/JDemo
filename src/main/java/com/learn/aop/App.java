@@ -23,6 +23,7 @@ public class App {
         App app = new App();
         app.say();
 
-        app.throwExcp();
+        CostTest costTest = new CostTest();
+        costTest.cost();
     }
 }
